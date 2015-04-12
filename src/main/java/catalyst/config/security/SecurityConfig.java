@@ -24,6 +24,8 @@ public class SecurityConfig  {
     @Configuration
     public static class ApiWebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {
         protected void configure(HttpSecurity http) throws Exception {
+
+            http.csrf().disable();
             /*
             http.antMatcher("/api/**")
                     .authorizeRequests()

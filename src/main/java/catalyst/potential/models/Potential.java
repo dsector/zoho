@@ -1,13 +1,22 @@
 package catalyst.potential.models;
 
+import org.springframework.data.annotation.Id;
+
 /**
  * Created by rgb24 on 4/11/15.
  */
 public class Potential {
 
+    @Id
+    private String id;
+
     public String owner;
 
     public Integer probability;
+
+    public String getId() {
+        return id;
+    }
 
     public Integer getProbability() {
         return probability;
@@ -24,5 +33,7 @@ public class Potential {
     public void setOwner(String owner) {
         this.owner = owner;
     }
+
+
 
 }
