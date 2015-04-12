@@ -2,6 +2,7 @@ package catalyst.http.controllers;
 
 import catalyst.potential.models.Potential;
 import catalyst.potential.repositories.PotentialRepository;
+import catalyst.potential.services.PotentialCreator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,10 +24,12 @@ public class PotentialController {
     @Autowired
     private PotentialRepository potentialRepository;
 
+    @Autowired
+    private PotentialCreator potentialCreator;
+
     @RequestMapping(value = "potentials", method = RequestMethod.GET)
     public Map<String, List<Potential>> getAllPotential() {
         Map<String, List<Potential>> map = new HashMap<>();
-
         List<Potential> potentials = potentialRepository.findAll();
 
         map.put("potentials", potentials);
@@ -44,7 +47,7 @@ public class PotentialController {
         potential.setOwner(owner);
         potential.setProbability(probability);
 
-        return potentialRepository.save(potential);
+        return potentialCreator.execute(potential);
     }
 
 
