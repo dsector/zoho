@@ -4,10 +4,7 @@ import catalyst.potential.models.Potential;
 import catalyst.potential.repositories.PotentialRepository;
 import catalyst.potential.services.PotentialCreator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -52,8 +49,17 @@ public class PotentialController {
 
 
     @RequestMapping(value = "potentials/{id}", method = RequestMethod.GET)
-    public Potential findOne(){
-        return null;
+    public Map<String, Potential> findOne(@PathVariable("id") String id){
+        Map<String, Potential> map = new HashMap();
+
+        Potential potential = potentialRepository.findOne(id);
+        if(potential == null){
+
+        }
+
+        map.put("potential", potential);
+
+        return map;
     }
 
 
