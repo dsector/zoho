@@ -2,6 +2,7 @@ package catalyst.http.controllers;
 
 import catalyst.potential.models.Potential;
 import catalyst.potential.models.Stage;
+import catalyst.potential.repositories.PotentialRepository;
 import catalyst.potential.repositories.StageRepository;
 import catalyst.potential.services.PotentialCreator;
 import catalyst.potential.services.StageCreator;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -27,13 +29,10 @@ public class SeedController {
     protected int counter = 0;
 
     @Autowired
-    private StageCreator stageCreator;
-
-    @Autowired
-    private PotentialCreator potentialCreator;
-
-    @Autowired
     private StageRepository stageRepository;
+
+    @Autowired
+    private PotentialRepository potentialRepository;
 
 
     @RequestMapping("seed")
@@ -53,9 +52,9 @@ public class SeedController {
 
         for(counter=0; counter<AM_20; counter++){
             stage = new Stage();
-            stage.setName(RandomStringUtils.random(10));
+            stage.setName(RandomStringUtils.randomAlphanumeric(10));
 
-            stageCreator.execute(stage);
+            stageRepository.save(stage);
         }
     }
 
@@ -75,11 +74,16 @@ public class SeedController {
             potential = new Potential();
             potential.setOwner(RandomStringUtils.randomAlphanumeric(7));
             potential.setProbability(rand.nextInt(100));
-            potential.setStage(stage);
-            potential.setContract(rand.nextFloat());
-            potential.setContractAmount(rand.nextFloat());
+            potential.setContract(rand.nextFloat() * 10);
+            potential.setContractAmount(rand.nextFloat() * 10);
+            potential.setPotentialName(RandomStringUtils.randomAlphabetic((9)));
+            potential.setClosingDate(new Date());
 
-            potentialCreator.execute(potential);
+            //potential = potentialRepository.save(potential);
+
+            potential.setStage(stage);
+
+            potentialRepository.save(potential);
         }
     }
 }

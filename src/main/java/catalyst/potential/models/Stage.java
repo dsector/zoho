@@ -1,23 +1,21 @@
 package catalyst.potential.models;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * Created by rgb24 on 4/12/15.
  */
+@Document
 public class Stage {
 
     @Id
-    private String id;
+    private String _id;
 
     private String name;
 
     public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+        return _id;
     }
 
     public String getName() {

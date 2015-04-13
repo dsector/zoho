@@ -2,14 +2,20 @@ package catalyst.potential.models;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.Date;
 
 /**
  * Created by rgb24 on 4/11/15.
  */
+@Document
 public class Potential {
 
     @Id
-    private String id;
+    private String _id;
+
+    private String potentialName;
 
     private String owner;
 
@@ -19,11 +25,13 @@ public class Potential {
 
     private Float contract;
 
+    private Date closingDate;
+
     @DBRef
     private Stage stage;
 
     public String getId() {
-        return id;
+        return _id;
     }
 
     public Integer getProbability() {
@@ -65,5 +73,21 @@ public class Potential {
 
     public void setStage(Stage stage) {
         this.stage = stage;
+    }
+
+    public String getPotentialName() {
+        return potentialName;
+    }
+
+    public void setPotentialName(String potentialName) {
+        this.potentialName = potentialName;
+    }
+
+    public Date getClosingDate() {
+        return closingDate;
+    }
+
+    public void setClosingDate(Date closingDate) {
+        this.closingDate = closingDate;
     }
 }

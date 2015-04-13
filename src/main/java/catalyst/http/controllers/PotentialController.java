@@ -51,4 +51,10 @@ public class PotentialController {
     }
 
 
+    @RequestMapping(value = "potentials/{id}", method = RequestMethod.GET)
+    public Potential findOne(){
+        return null;
+    }
+
+
 }
