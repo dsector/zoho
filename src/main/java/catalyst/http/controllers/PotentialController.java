@@ -62,5 +62,11 @@ public class PotentialController {
         return map;
     }
 
+    @RequestMapping(value="auth", method=RequestMethod.GET)
+    public String confidential(){
+        return "confidential info";
+    }
+
+
 
 }

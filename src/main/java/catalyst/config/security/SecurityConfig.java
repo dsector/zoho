@@ -12,7 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
  */
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig  {
+public class SecurityConfig {
 
     @Autowired
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -28,6 +28,12 @@ public class SecurityConfig  {
             http.csrf().disable();
             http.antMatcher("/api/**")
                     .authorizeRequests().anyRequest().permitAll();
+            http.antMatcher("/api/1.0/auth")
+                    .authorizeRequests()
+                        .anyRequest()
+                        .authenticated()
+                    .and()
+                        .httpBasic();
                     /*
                         .anyRequest()
                         .authenticated()
