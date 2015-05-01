@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -63,25 +64,18 @@ public class SeedController {
 
         Random rand = new Random();
 
-        List<Stage> stages = new ArrayList<Stage>();
-        stages = stageRepository.findAll();
-
-        Stage stage;
+        DecimalFormat df = new DecimalFormat("#.##");
 
         for(counter=0; counter<AM_20; counter++){
-            stage = stages.get(rand.nextInt(20));
-
             potential = new Potential();
-            potential.setOwner(RandomStringUtils.randomAlphanumeric(7));
-            potential.setProbability(rand.nextInt(100));
-            potential.setContract(rand.nextFloat() * 10);
-            potential.setContractAmount(rand.nextFloat() * 10);
+            potential.setRateSchedule(rand.nextInt(100));
+            potential.setAverageBill(Double.valueOf(df.format(rand.nextDouble() * 10)));
+            potential.setUtility(Double.valueOf(df.format(rand.nextDouble() * 10)));
+            potential.setAnualUsage(Double.valueOf(df.format(rand.nextDouble() * 10)));
             potential.setPotentialName(RandomStringUtils.randomAlphabetic((9)));
-            potential.setClosingDate(new Date());
+            potential.setAddress(RandomStringUtils.randomAlphabetic(6));
 
             //potential = potentialRepository.save(potential);
-
-            potential.setStage(stage);
 
             potentialRepository.save(potential);
         }

@@ -36,13 +36,11 @@ public class PotentialController {
 
     @RequestMapping(value = "potentials", method = RequestMethod.POST)
     public Potential createPotential(
-            @RequestParam(value = "owner") String owner,
             @RequestParam(value = "probability") Integer probability
 
     ) {
         Potential potential = new Potential();
-        potential.setOwner(owner);
-        potential.setProbability(probability);
+        potential.setRateSchedule(probability);
 
         return potentialCreator.execute(potential);
     }

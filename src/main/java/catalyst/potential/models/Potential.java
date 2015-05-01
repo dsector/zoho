@@ -13,66 +13,26 @@ import java.util.Date;
 public class Potential {
 
     @Id
-    private String _id;
+    private String id;
 
     private String potentialName;
 
-    private String owner;
+    private String address;
 
-    private Integer probability;
+    private Integer rateSchedule;
 
-    private Float contractAmount;
+    private Double averageBill;
 
-    private Float contract;
+    private Double anualUsage;
 
-    private Date closingDate;
+    private Double utility;
 
-    @DBRef
-    private Stage stage;
-
-    public String getId() {
-        return _id;
+    public void setId(String id) {
+        this.id=id;
     }
 
-    public Integer getProbability() {
-        return probability;
-    }
-
-    public void setProbability(Integer probability) {
-        this.probability = probability;
-    }
-
-    public String getOwner() {
-        return owner;
-    }
-
-    public void setOwner(String owner) {
-        this.owner = owner;
-    }
-
-
-    public Float getContractAmount() {
-        return contractAmount;
-    }
-
-    public void setContractAmount(Float contractAmount) {
-        this.contractAmount = contractAmount;
-    }
-
-    public Float getContract() {
-        return contract;
-    }
-
-    public void setContract(Float contract) {
-        this.contract = contract;
-    }
-
-    public Stage getStage() {
-        return stage;
-    }
-
-    public void setStage(Stage stage) {
-        this.stage = stage;
+    public String getId(){
+        return id;
     }
 
     public String getPotentialName() {
@@ -83,11 +43,48 @@ public class Potential {
         this.potentialName = potentialName;
     }
 
-    public Date getClosingDate() {
-        return closingDate;
+    public String getAddress() {
+        return address;
     }
 
-    public void setClosingDate(Date closingDate) {
-        this.closingDate = closingDate;
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+
+    public Integer getRateSchedule() {
+        return rateSchedule;
+    }
+
+    public void setRateSchedule(Integer rateSchedule) {
+        this.rateSchedule = rateSchedule;
+    }
+
+    public Double getAverageBill() {
+        return averageBill;
+    }
+
+    public void setAverageBill(Double averageBill) {
+        this.averageBill = averageBill;
+    }
+
+    public Double getAnualUsage() {
+        return anualUsage;
+    }
+
+    public void setAnualUsage(Double anualUsage) {
+        this.anualUsage = anualUsage;
+    }
+
+    public Double getUtility() {
+        return utility;
+    }
+
+    public void setUtility(Double utility) {
+        this.utility = utility;
+    }
+
+    public String toString(){
+        return "id: " + getId() + " name: " + getPotentialName() + " address: " + getAddress();
     }
 }
