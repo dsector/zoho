@@ -14,7 +14,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 @EnableScheduling
 public class Sync {
 
-    @Scheduled(fixedDelay = 5000)
+    @Scheduled(fixedDelay = 50000)
     public void syncWithZoho(){
         //System.out.println("adqwdqwdqwd");
     }

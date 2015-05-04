@@ -4,6 +4,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 
 /**
@@ -15,23 +17,25 @@ public class Potential {
     @Id
     private String id;
 
+    private String externalId;
+
     private String potentialName;
 
     private String address;
 
-    private Integer rateSchedule;
+    private String rateSchedule;
 
-    private Double averageBill;
+    private String averageBill;
 
     private Double anualUsage;
 
-    private Double utility;
+    private String utility;
 
     public void setId(String id) {
-        this.id=id;
+        this.id = id;
     }
 
-    public String getId(){
+    public String getId() {
         return id;
     }
 
@@ -52,19 +56,19 @@ public class Potential {
     }
 
 
-    public Integer getRateSchedule() {
+    public String getRateSchedule() {
         return rateSchedule;
     }
 
-    public void setRateSchedule(Integer rateSchedule) {
+    public void setRateSchedule(String rateSchedule) {
         this.rateSchedule = rateSchedule;
     }
 
-    public Double getAverageBill() {
+    public String getAverageBill() {
         return averageBill;
     }
 
-    public void setAverageBill(Double averageBill) {
+    public void setAverageBill(String averageBill) {
         this.averageBill = averageBill;
     }
 
@@ -76,15 +80,24 @@ public class Potential {
         this.anualUsage = anualUsage;
     }
 
-    public Double getUtility() {
+    public String getUtility() {
         return utility;
     }
 
-    public void setUtility(Double utility) {
+    public void setUtility(String utility) {
         this.utility = utility;
     }
 
-    public String toString(){
-        return "id: " + getId() + " name: " + getPotentialName() + " address: " + getAddress();
+    public String toString() {
+        return "id: " + id + " name: " + potentialName + " address: " + address + " " + rateSchedule + " " + anualUsage;
+    }
+
+
+    public String getExternalId() {
+        return externalId;
+    }
+
+    public void setExternalId(String externalId) {
+        this.externalId = externalId;
     }
 }

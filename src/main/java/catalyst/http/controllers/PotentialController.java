@@ -36,7 +36,7 @@ public class PotentialController {
 
     @RequestMapping(value = "potentials", method = RequestMethod.POST)
     public Potential createPotential(
-            @RequestParam(value = "probability") Integer probability
+            @RequestParam(value = "probability") String probability
 
     ) {
         Potential potential = new Potential();

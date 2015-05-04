@@ -68,9 +68,9 @@ public class SeedController {
 
         for(counter=0; counter<AM_20; counter++){
             potential = new Potential();
-            potential.setRateSchedule(rand.nextInt(100));
-            potential.setAverageBill(Double.valueOf(df.format(rand.nextDouble() * 10)));
-            potential.setUtility(Double.valueOf(df.format(rand.nextDouble() * 10)));
+            potential.setRateSchedule(RandomStringUtils.randomAlphabetic(4));
+            potential.setAverageBill("150");
+            potential.setUtility(RandomStringUtils.randomAlphabetic(5));
             potential.setAnualUsage(Double.valueOf(df.format(rand.nextDouble() * 10)));
             potential.setPotentialName(RandomStringUtils.randomAlphabetic((9)));
             potential.setAddress(RandomStringUtils.randomAlphabetic(6));
