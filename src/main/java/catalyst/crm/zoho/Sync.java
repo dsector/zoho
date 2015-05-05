@@ -1,5 +1,7 @@
 package catalyst.crm.zoho;
 
+import catalyst.crm.zoho.commands.GetPotentials;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -14,8 +16,11 @@ import org.springframework.scheduling.annotation.Scheduled;
 @EnableScheduling
 public class Sync {
 
-    @Scheduled(fixedDelay = 50000)
+    @Autowired
+    GetPotentials getPotentials;
+
+    @Scheduled(fixedDelay = 1200000)
     public void syncWithZoho(){
-        //System.out.println("adqwdqwdqwd");
+        getPotentials.execute();
     }
 }

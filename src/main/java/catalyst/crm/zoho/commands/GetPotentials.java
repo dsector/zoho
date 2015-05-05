@@ -94,7 +94,7 @@ public class GetPotentials implements Command<ArrayList<Potential>> {
 
                     potential.setPotentialName(responseMap.get("Potential Name"));
                     potential.setExternalId(responseMap.get("POTENTIALID"));
-                    
+
                     if (responseMap.containsKey("Electric Utility")) {
                         potential.setUtility(responseMap.get("Electric Utility"));
                     }
