@@ -1,12 +1,9 @@
 package catalyst.potential.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import java.util.Date;
 
 /**
  * Created by rgb24 on 4/11/15.
@@ -30,6 +27,9 @@ public class Potential {
     private Double anualUsage;
 
     private String utility;
+
+    @JsonProperty("utilityUsage")
+    private UtilityUsage utilityUsage;
 
     public void setId(String id) {
         this.id = id;
@@ -99,5 +99,14 @@ public class Potential {
 
     public void setExternalId(String externalId) {
         this.externalId = externalId;
+    }
+
+
+    public UtilityUsage getUtiltyUsage() {
+        return utilityUsage;
+    }
+
+    public void setUtiltyUsage(UtilityUsage utilityUsage) {
+        this.utilityUsage = utilityUsage;
     }
 }
