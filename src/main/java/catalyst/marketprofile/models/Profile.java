@@ -1,6 +1,7 @@
 package catalyst.marketprofile.models;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class Profile {
 
     private String name;
 
-    private List<Item> items = new ArrayList<Item>();
+    private List<Item> items;
 
     public String getId() {
         return id;
